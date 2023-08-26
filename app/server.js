@@ -3,10 +3,10 @@ module.exports = class Application {
     #app = this.#express();
     constructor(PORT, DB_url) {
         this.configDatabase(DB_url),
-            this.configApplication(),
-            this.createServer(PORT),
-            this.createRoutes(),
-            this.errorHandler()
+        this.configApplication(),
+        this.createServerr(PORT),
+        this.createRoutes(),
+        this.errorHandler()
     }
     configApplication() {
         const path = require('path')
@@ -14,13 +14,13 @@ module.exports = class Application {
         this.#app.use(this.#express.urlencoded({ extended: true }))
         this.#app.use(this.#express.static(path.join(__dirname, '..', 'public')))
     }
-    createServer(PORT) {
+    createServerr(PORT) {
         const http = require('http');
-        const server = http.createServer(PORT);
-        server.listen(PORT, () => { `server run on port : http://localhost${PORT}` });
+        const server = http.createServer();
+        server.listen(PORT, () => { console.log(`server run on port : http://localhost:${PORT}`); });
     }
     configDatabase(DB_url) {
-        const { default: mongoose } = require("mongoose")
+        const mongoose = require("mongoose")
         mongoose.connect(DB_url)
     }
     errorHandler() {
@@ -42,7 +42,11 @@ module.exports = class Application {
     }
     createRoutes() {
         this.#app.get('/', (req, res, next) => {
-            res.status(200).json({ message: 'this is express server' })
+            try {
+                res.status(200).json({ message: 'this is express server' })
+            } catch (error) {
+                next(error)
+            }
         })
     }
 }
