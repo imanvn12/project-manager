@@ -1,0 +1,10 @@
+
+post http://localhost:4000/auth/register
+Content-Type: application/json
+
+{
+    "username": "iman_vn",
+    "email": "imanvn@gmail.com",
+    "phone_number": "+989935025346",
+    "password": "12345678"
+}

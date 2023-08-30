@@ -48,7 +48,14 @@ module.exports = class Application {
             } catch (error) {
                 next(error)
             }
-            this.#app.use(ALLRoute)
         })
+        this.#app.use(ALLRoute)
+        // this.#app.use((err, req, res, next) => {
+        //     try {
+        //     } catch (error) {
+        //         next(error)
+        //     }
+        // })
+        
     }
 }
