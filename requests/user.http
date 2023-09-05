@@ -1,0 +1,14 @@
+### login
+GET  http://localhost:4000/user/profile
+Authorization: Bearer {{$dotenv TOKEN}}
+
+### login
+POST  http://localhost:4000/user/profile
+Authorization: Bearer {{$dotenv TOKEN}}
+Content-Type: application/json
+
+{
+    "first_name": "iman",
+    "last_name": "vn",
+    "skill": ["node.js", "expres.js"]
+}

@@ -23,6 +23,15 @@ function registerValidator() {
     ]
 }
 
+function loginValidator() {
+    return [
+        body("username").notEmpty().withMessage('username must not be empty'),
+        body("password").notEmpty().isLength({ min: 8, max: 12 }).withMessage("length must be between 8 and 12")
+
+    ]
+}
+
 module.exports = {
-    registerValidator
+    registerValidator,
+    loginValidator
 }
