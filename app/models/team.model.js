@@ -6,7 +6,7 @@ const teamSchema = new mongoose.Schema({
     users: { type: String, default: [] }
 })
 
-const teammodel = mongoose.model('User', teamSchema)
+const teammodel = mongoose.model('Team', teamSchema)
 module.exports = {
     teammodel
 }
