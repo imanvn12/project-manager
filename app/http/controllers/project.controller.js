@@ -16,22 +16,22 @@ class projectcontroller {
             next(error);
         }
     }
-    getAllProjects() {
+    getAllProjects(req, res, next) {
 
     }
-    getProjectByID() {
+    getProjectByID(req, res, next) {
 
     }
-    getProjectOfTeam() {
+    getProjectOfTeam(req, res, next) {
 
     }
-    getProjectOfUser() {
+    getProjectOfUser(req, res, next) {
 
     }
-    uploadProject() {
+    uploadProject(req, res, next) {
 
     }
-    removeProject() {
+    removeProject(req, res, next) {
 
     }
 }
