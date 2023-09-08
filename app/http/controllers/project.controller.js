@@ -31,19 +31,50 @@ class projectcontroller {
             next(error);
         }
     }
-    getProjectByID() {
+    async getProjectByID(req, res, next) {
+        try {
+            const owner = req.user._id;
+            const projectID = req.params.id;
+            const result = await projectmodel.findOne({ owner, _id: projectID });
+            if (!result) throw { status: 400, message: 'project not found' };
+            return res.status(200).json({
+                status: 200,
+                success: true,
+                result
+            })
+        } catch (error) {
+            next(error);
+        }
+    }
+    async removeProject(req, res, next) {
+        try {
+            const owner = req.user._id;
+            let projectID = req.params.id;
+            console.log(projectID);
+            const result = await projectmodel.findOne({ owner, _id: projectID });
+            if (!result) throw { status: 400, message: 'project not found' };
+            const project = await projectmodel.deleteOne({ _id: projectID });
+            // if (!project) throw { status: 400, message: 'project did not delete' };
+            if (project.deletedCount == 0) throw { status: 400, message: 'project did not delete' }
+            return res.status(200).json({
+                status: 200,
+                success: true,
+                message: 'project deleted successfully'
+            })
+        } catch (error) {
+            next(error);
+        }
+    }
+    getProjectOfTeam(req, res, next) {
 
     }
-    getProjectOfTeam() {
+    getProjectOfUser(req, res, next) {
 
     }
-    getProjectOfUser() {
+    uploadProject(req, res, next) {
 
     }
-    uploadProject() {
-
-    }
-    removeProject() {
+    updateProject(req, res, next) {
 
     }
 }

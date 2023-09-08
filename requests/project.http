@@ -1,8 +1,24 @@
+
+###create project
 POST  http://localhost:4000/project/create
 Authorization: Bearer {{$dotenv TOKEN}}
 Content-Type: application/json
-
 {
     "title": "title of project",
     "text": "text of project for project-manager"
 }
+
+###get projects
+GET  http://localhost:4000/project/list
+Authorization: Bearer {{$dotenv TOKEN}}
+Content-Type: application/json
+
+###get project by id
+GET  http://localhost:4000/project/64f708907de51f189d40c57a
+Authorization: Bearer {{$dotenv TOKEN}}
+Content-Type: application/json
+
+###delete project by id
+DELETE  http://localhost:4000/project/remove/64f8a56109fe2b5207ae6fbc
+Authorization: Bearer {{$dotenv TOKEN}}
+Content-Type: application/json
